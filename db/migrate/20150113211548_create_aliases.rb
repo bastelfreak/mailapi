@@ -3,12 +3,10 @@ class CreateAliases < ActiveRecord::Migration
     create_table :aliases do |t|
       t.string :source
       t.string :destination
-      t.int :domain_id
-      t.int :id
+      t.belongs_to :domain
 
       t.timestamps null: false
     end
     add_index :aliases, [:source, :destination], unique: true
-    add_index :aliases, :id, unique: true
   end
 end
